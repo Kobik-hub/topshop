@@ -36,6 +36,9 @@ const App = () => {
     const { id, name } = jwt.decode(token);
     setCurrentUser({ id: id, name: name });
   }
+  if (localStorage.getItem("cart") && currentCart.length === 0) {
+    setCurrentCart(JSON.parse(localStorage.getItem("cart")));
+  }
 
   return (
     <UserContext.Provider value={{ currentUser, setCurrentUser }}>

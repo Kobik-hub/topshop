@@ -1,4 +1,4 @@
-const addToCartHandler = (product, cart, alert, e) => {
+const addToCartHandler = async (product, cart, alert, e) => {
   e.preventDefault();
 
   const enteredQty = e.target[0].options.selectedIndex;
@@ -22,7 +22,7 @@ const addToCartHandler = (product, cart, alert, e) => {
     product: product,
   };
   cart.setCurrentCart([...currentCart, item]);
-  console.log(cart);
+  localStorage.setItem("cart", JSON.stringify([...currentCart, item]));
   alert.show("New item added to your shopping cart");
 };
 

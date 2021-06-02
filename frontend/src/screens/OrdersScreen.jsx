@@ -8,11 +8,11 @@ const OrdersScreen = ({ math }) => {
     const fetchOrders = async () => {
       const localData = localStorage.getItem("currentUser");
 
-      if (localData && orders.length < 1) {
+      if (localData && orders.length === 0) {
         const user = JSON.parse(localData);
         const { data } = await axios.get(`/api/orders/${user.id}`);
         setOrders(data);
-        // console.log(data);
+        console.log(data);
       }
     };
     fetchOrders();
@@ -20,7 +20,7 @@ const OrdersScreen = ({ math }) => {
 
   return (
     <>
-      {orders.length > 1 ? (
+      {orders.length > 0 ? (
         <Table striped bordered hover size="sm">
           <thead>
             <tr>

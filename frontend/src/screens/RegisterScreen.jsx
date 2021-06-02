@@ -40,6 +40,8 @@ const RegisterScreen = ({ history }) => {
       localStorage.setItem("token", token);
       const decoded = await jwt.decode(token);
       setCurrentUser({ id: decoded.id, name: decoded.name });
+      localStorage.setItem("currentUser", JSON.stringify(decoded));
+
       history.push("/");
     } catch (error) {
       alert.show(error.message);

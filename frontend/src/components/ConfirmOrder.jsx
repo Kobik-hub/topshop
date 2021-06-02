@@ -33,6 +33,7 @@ const ConfirmOrder = () => {
         totalPrice: totalPrice(currentCart),
       });
       setConfirmPop({ orderId: requestedData.data, active: true });
+      localStorage.setItem("cart", []);
     } catch (error) {
       //   alert.show("email or password are incorrect");
       console.log(error.message);
